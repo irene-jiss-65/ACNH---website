@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML and CSS Tags</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Web Tags</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/villagers">Villagers</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Personality</th>
+                <th>Birthday</th>
+            </tr>
+           <tbody>
+            {% for villagers in villager %}
+            <tr>
+                <td>{{ villagers[0] }}</td>
+                <td>{{ villagers[1] }}</td>
+                <td>{{ villagers[2] }}</td>
+                <td>{{ villagers[3] }}</td>
+                
+
+            </tr>
+            {% endfor %}
+           </tbody>
+        </table>
+        
+    </main>
+</body>
