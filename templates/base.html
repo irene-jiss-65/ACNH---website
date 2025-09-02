@@ -17,7 +17,14 @@
             <li>
                 <a href="/villagers">Villagers</a>
             </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
         </ul>
+        <form method="POST" action="/search">
+            <input type="text" name="search" id="search">
+            <input type="submit" value="Search">
+        </form>
     </nav>
     <main>
         {% block main %}{% endblock %}

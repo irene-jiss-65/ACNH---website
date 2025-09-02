@@ -7,10 +7,10 @@ DATABASE = "ACNHPopularVillagers.db"
 
 @app.route("/")
 def render_home():
-    return render_template("index.html")
+    return render_template("index.html", species=get_species())
 
 @app.route("/villagers")
-def render_webpage():
+def render_webpage(name_type):
     query = "SELECT Name, Species, Personality, Birthday FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
@@ -21,8 +21,58 @@ def render_webpage():
     villager_list = cur.fetchall()
     con.close()
     print(villager_list)
-    return render_template("villagers.html", villager=villager_list)
+    title = name_type.upper()
+    return render_template("villagers.html", villager=villager_list, name=get_names(name_type), title=title, species=get_species())
 
+@app.route("/about")
+def render_about():
+    return render_template("about.html")
+
+@app.route('/search', methods=['GET', 'POST'])
+def render_search():
+    """
+    Find all records which contain the search item
+    :POST contains the search value
+    :returns a rendered webpage"""
+
+    search =request.form['search']
+    title = "Search for " + search
+    query = "SELECT Name, Personality FROM popular_villagers WHERE " \
+            "Name LIKE ? OR Personality LIKE ?"
+    search = "%" + search + "%"
+    con=create_connection(DATABASE)
+    cur = con.cursor()
+    cur.execute(query, (search, search))
+    villager_list = cur.fetchall()
+    con.close()
+
+    return render_template ("villagers.html", villager=villager_list, title=title, species=get_species())
+
+def get_names(name_type):
+    title = name_type.upper()
+    query = "SELECT Name, Personality FROM popular_villagers WHERE Species=?"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    #Query the Database
+    cur.execute(query, (title,))
+    name_list = cur.fetchall()
+    con.close()
+    print(name_list)
+    return name_list
+
+def get_species():
+    con = create_connection(DATABASE)
+    query = "SELECT DISTINCT Species FROM popular_villagers ORDER BY Species ASC"
+
+    cur = con.cursor()
+    cur.execute(query)
+    records = cur.fetchall()
+    print(records)
+    for i in range(len(records)):
+        records[i] = records[i][0]
+    print(records)
+    return records
 
 
 def create_connection(db_file):

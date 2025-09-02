@@ -9,7 +9,7 @@ body {
     width: 75%;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 200px auto;
 }
 
 header, footer {
@@ -97,4 +97,21 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #ff0000;
     color: #ffffff;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+
+}
+
+main h2 {
+    grid-column: 1/5;
+}
+
+article {
+    background-color:#333333;
+    padding: 5px;
 }
