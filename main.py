@@ -39,9 +39,50 @@ def render_alldata():
    # title = name_type.upper()
     return render_template("alldata.html", villager=villager_list)
 
-@app.route("/about")
-def render_about():
-    return render_template("about.html")
+@app.route("/species")
+def render_species():
+    query = "SELECT Name, Species FROM popular_villagers"
+    con = create_connection(DATABASE)
+    print(con)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    villager_data = cur.fetchall()
+    con.close()
+    print(villager_data)
+   # title = name_type.upper() 
+    species_dict = {} # Create a dictionary of species
+    
+    for name, species in villager_data:
+        if species not in species_dict:
+            species_dict[species] = [] # Make a list of names for each species
+        species_dict[species].append(name) # append each name to specific species
+
+
+    return render_template("species.html", species_dict = species_dict)
+
+@app.route("/personality")
+def render_personality():
+    query = "SELECT Name, Personality FROM popular_villagers"
+    con = create_connection(DATABASE)
+    print(con)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    villager_data = cur.fetchall()
+    con.close()
+    print(villager_data)
+   # title = name_type.upper() 
+    personality_dict = {} # Create a dictionary of Personalities
+    
+    for name, personality in villager_data:
+        if personality not in personality_dict:
+            personality_dict[personality] = [] # Make a list of names for each personality
+        personality_dict[personality].append(name) # append each name to specific personality
+
+    return render_template("personality.html", personality_dict = personality_dict)
 
 @app.route('/search', methods=['GET', 'POST'])
 def render_search():

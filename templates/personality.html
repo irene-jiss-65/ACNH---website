@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h2>Species</h2>
+<h2>Personality</h2>
 
-    {% for species, villagers in species_dict.items() %}
+    {% for personality, villagers in personality_dict.items() %}
         <article>
-            <h3>{{ species }}</h3> 
+            <h3>{{ personality }}</h3> 
             <p>
                 {% for villager in villagers %}
                     <p>{{ villager }}</p> 
