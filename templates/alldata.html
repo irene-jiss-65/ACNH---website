@@ -1,16 +1,30 @@
 {% extends "base.html" %}
 
-{% block main %}
-    <h2>All Animal Crossing Villagers</h2>
-    {% for villagers in villager %}
-    <article>
-        <h3>{{ villagers[0] }}</h3>
-        <p>{{ villagers[1] }}</p>
-        <p>{{ villagers[2] }}</p>
-        <p>{{ villagers[3] }}</p>
-        
 
-    </article>
-    {% endfor %}
+{% block main %}
+   
+    <h2>All Animal Crossing Villagers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Personality</th>
+                <th>Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for villagers in villager %}
+            <tr>
+            
+                <td>{{ villagers[0] }}</td>
+                <td>{{ villagers[1] }}</td>
+                <td>{{ villagers[2] }}</td>
+                <td>{{ villagers[3] }}</td>
+              {% endfor %}
+            </tr>
+        </tbody>
+        
+    </table>
 
 {% endblock %}
