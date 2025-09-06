@@ -6,13 +6,16 @@ body {
     background-color: #000000;
     color: #ffffff;
     font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
-    width: 100%;
+    width: auto;
     margin: auto;
     display: grid;
     grid-template-columns: 200px auto;
     align-items: center;
 }
 
+h1 {
+    text-align: center;
+}
 header, footer {
     background-color: #222222;
     padding: 10px;
@@ -63,7 +66,12 @@ nav input[type="submit"] {
 }
 
 nav input[type="submit"]:hover {
-    background-color: #888;
+    padding: 5px 10px;
+    border: none;
+    background-color: #666;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
 }
 
 nav ul {
@@ -109,8 +117,17 @@ nav li a:hover {
      border-collapse: collapse;
  }
 
- th, td {
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    
 
+}
+
+ th, td {
+    text-align: center;
      border: 1px solid #ffffff;
      padding: 5px;
  }
@@ -170,4 +187,10 @@ main h2 {
 article {
     background-color:#333333;
     padding: 5px;
+}
+
+.amiibo-image {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
 }

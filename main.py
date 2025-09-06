@@ -11,7 +11,7 @@ def render_home():
 
 @app.route("/villagers")
 def render_webpage():
-    query = "SELECT Name, Species FROM popular_villagers"
+    query = "SELECT Name, Species, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
     cur = con.cursor()
@@ -26,7 +26,7 @@ def render_webpage():
 
 @app.route("/alldata")
 def render_alldata():
-    query = "SELECT Name, Species, Personality, Birthday FROM popular_villagers"
+    query = "SELECT Name, Species, Personality, Birthday, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
     cur = con.cursor()
@@ -41,7 +41,7 @@ def render_alldata():
 
 @app.route("/species")
 def render_species():
-    query = "SELECT Name, Species FROM popular_villagers"
+    query = "SELECT Name, Species, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
     cur = con.cursor()
@@ -54,17 +54,23 @@ def render_species():
    # title = name_type.upper() 
     species_dict = {} # Create a dictionary of species
     
-    for name, species in villager_data:
+    for name, species, image in villager_data:
         if species not in species_dict:
-            species_dict[species] = [] # Make a list of names for each species
-        species_dict[species].append(name) # append each name to specific species
+            species_dict[species] = {'villagers': [], 'images': []} # Make a list of names for each species
+        species_dict[species]['villagers'].append(name)
+        species_dict[species]['images'].append(image) # append each name to specific species
+    
+    species_dict_zipped = {}
+    for species, data in species_dict.items():
+        species_dict_zipped[species] = list(zip(data['villagers'], data['images']))
 
 
-    return render_template("species.html", species_dict = species_dict)
+
+    return render_template("species.html", species_dict = species_dict_zipped)
 
 @app.route("/personality")
 def render_personality():
-    query = "SELECT Name, Personality FROM popular_villagers"
+    query = "SELECT Name, Personality, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
     cur = con.cursor()
@@ -77,12 +83,17 @@ def render_personality():
    # title = name_type.upper() 
     personality_dict = {} # Create a dictionary of Personalities
     
-    for name, personality in villager_data:
+    for name, personality, image in villager_data:
         if personality not in personality_dict:
-            personality_dict[personality] = [] # Make a list of names for each personality
-        personality_dict[personality].append(name) # append each name to specific personality
+            personality_dict[personality] = {'villagers': [], 'images':[]} # Make a list of names for each personality
+        personality_dict[personality]['villagers'].append(name)
+        personality_dict[personality]['images'].append(image) # append each name to specific species
+    
+    personality_dict_zipped = {}
+    for personality, data in personality_dict.items():
+        personality_dict_zipped[personality] = list(zip(data['villagers'], data['images']))
 
-    return render_template("personality.html", personality_dict = personality_dict)
+    return render_template("personality.html", personality_dict = personality_dict_zipped)
 
 @app.route('/search', methods=['GET', 'POST'])
 def render_search():

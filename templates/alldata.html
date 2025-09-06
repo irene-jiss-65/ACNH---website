@@ -4,27 +4,34 @@
 {% block main %}
    
     <h2>All Animal Crossing Villagers</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Species</th>
-                <th>Personality</th>
-                <th>Birthday</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for villagers in villager %}
-            <tr>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Species</th>
+                    <th>Personality</th>
+                    <th>Birthday</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for villagers in villager %}
+                <tr>
+                
+                    <td>{{ villagers[0] }}</td>
+                    <td>{{ villagers[1] }}</td>
+                    <td>{{ villagers[2] }}</td>
+                    <td>{{ villagers[3] }}</td>
+                    <td>
+                        <div class="villager-image">
+                            <img src="/static/images/{{ villagers[4] }}.jpg" class="amiibo-image">
+                        </div>
+                    </td>
+                {% endfor %}
+                </tr>
+            </tbody>
             
-                <td>{{ villagers[0] }}</td>
-                <td>{{ villagers[1] }}</td>
-                <td>{{ villagers[2] }}</td>
-                <td>{{ villagers[3] }}</td>
-              {% endfor %}
-            </tr>
-        </tbody>
-        
-    </table>
+        </table>
+    </div>
 
 {% endblock %}

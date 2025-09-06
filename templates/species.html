@@ -3,13 +3,17 @@
 {% block main %}
 <h2>Species</h2>
 
-    {% for species, villagers in species_dict.items() %}
+    {% for species, villager_image_pairs in species_dict.items() %}
         <article>
             <h3>{{ species }}</h3> 
             <p>
-                {% for villager in villagers %}
-                    <p>{{ villager }}</p> 
+                {% for villager, image in villager_image_pairs %}
+                    <p>
+                        {{ villager }}
+                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
+                    </p> 
                 {% endfor %}
+                
             </p>
         </article>
     {% endfor %}

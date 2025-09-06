@@ -3,15 +3,18 @@
 {% block main %}
 <h2>Personality</h2>
 
-    {% for personality, villagers in personality_dict.items() %}
+    {% for personality, villager_image_pairs in personality_dict.items() %}
         <article>
             <h3>{{ personality }}</h3> 
             <p>
-                {% for villager in villagers %}
-                    <p>{{ villager }}</p> 
+                {% for villager, image in villager_image_pairs %}
+                    <p>
+                        {{ villager }}
+                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
+                    </p> 
                 {% endfor %}
+                
             </p>
         </article>
     {% endfor %}
-
 {% endblock %}
