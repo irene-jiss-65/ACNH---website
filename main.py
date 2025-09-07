@@ -104,20 +104,20 @@ def render_search():
 
     search =request.form['search']
     title = "Search for " + search
-    query = "SELECT Name, Personality, Species FROM popular_villagers WHERE " \
-            "Name LIKE ? OR Personality LIKE ? OR Species LIKE ?"
+    query = "SELECT Name, Personality, Species, Birthday, VillagerImage FROM popular_villagers WHERE " \
+            "Name LIKE ? OR Personality LIKE ? OR Species LIKE ? OR Birthday LIKE ? OR VillagerImage Like ?"
     search = "%" + search + "%"
     con=create_connection(DATABASE)
     cur = con.cursor()
-    cur.execute(query, (search, search, search))
+    cur.execute(query, (search, search, search, search, search))
     villager_list = cur.fetchall()
     con.close()
 
-    return render_template ("villagers.html", villager=villager_list, title=title)
+    return render_template ("alldata.html", villager=villager_list, title=title)
 
 def get_names(name_type):
     title = name_type.upper()
-    query = "SELECT Name, Personality, Species FROM popular_villagers WHERE Species=?"
+    query = "SELECT Name, Personality, Species, VillagerImage FROM popular_villagers WHERE Species=?"
     con = create_connection(DATABASE)
     cur = con.cursor()
 

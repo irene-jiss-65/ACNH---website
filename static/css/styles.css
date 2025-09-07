@@ -6,15 +6,27 @@ body {
     background-color: #000000;
     color: #ffffff;
     font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
-    width: auto;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 200px auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    max-width: auto;
 }
 
 h1 {
     text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+button {
+    background-color: #444444;
+    border: none;
+    cursor: pointer;
 }
 header, footer {
     background-color: #222222;
@@ -33,6 +45,9 @@ nav {
     margin: 0;
     padding: 10px;
     flex-wrap: wrap;
+    width: 100vw;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 nav a {
@@ -108,29 +123,49 @@ nav li a:hover {
  }
 
  main {
-     padding: 5px;
+     max-width: 1200px;
+     text-align: center;
+     width: 100%;
+     margin: 0 auto;
+     padding: 20px;
  }
 
  table {
      border: 2px solid #ffffff;
      width: 100%;
      border-collapse: collapse;
+     margin: 20px auto;
+     max-width: 100%;
+     table-layout: fixed;
  }
 
-.container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-    
-
-}
+ .container {
+    max-width: 1200px;
+    margin: 0 auto;
+ }
 
  th, td {
     text-align: center;
      border: 1px solid #ffffff;
      padding: 5px;
  }
+
+th:nth-child(1),
+td:nth-child(1),
+th:nth-child(2),
+td:nth-child(2),
+th:nth-child(3),
+td:nth-child(3),
+th:nth-child(4),
+td:nth-child(4) {
+    width: 15%; /* Distribute evenly across 4 text columns */
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 40%; /* Image column gets more room */
+}
+
 
  th {
      color: #000000;
@@ -177,6 +212,7 @@ main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 20px;
     column-gap: 20px;
+    width: 100%;
 
 }
 
@@ -190,7 +226,10 @@ article {
 }
 
 .amiibo-image {
-    width: 150px;
+    width: 100%;
     height: auto;
     object-fit: cover;
+    max-width: 150px;
+    display: block;
+    margin: 0 auto;
 }
