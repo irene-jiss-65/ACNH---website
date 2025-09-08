@@ -1,11 +1,13 @@
 html {
-    background-color: #333333;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 body {
-    background-color: #fffefc;
+    background-color: #f4f1e9;
     color: #201002;
-    font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+    
 
     margin: 0;
     display: flex;
@@ -15,21 +17,26 @@ body {
     padding: 0;
 }
 
-h1 {
-    text-align: center;
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 
 h2 {
     text-align: center;
+    padding: 10px;
+    text-shadow: 0 2px 3px #dfc69f;
 }
 
 button {
-    background-color: #ffffff;
+    background-color: #ccdbc7;
     border: none;
     cursor: pointer;
 }
 header, footer {
-    background-color: #ffffff;
+    background-color: #ccdbc7;
     padding: 2px;
     margin: 0;
     grid-column: 1/3;
@@ -42,7 +49,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    background-color: #ffffff;
+    background-color: #ccdbc7;
     margin: 0;
     padding: 10px;
     flex-wrap: wrap;
@@ -135,21 +142,25 @@ nav li a:hover {
 
  }
 
-
-
  th, td {
     text-align: center;
-     border: 1px solid #ffffff;
-     padding: 5px;
+    padding: 20px;
+    border: 2px, solid #f5adc6;
+    border-left: none;
+    border-right: none;
  }
 
  th {
-     color: #000000;
-     background-color: #999999;
+    border: 2px, solid, #f5adc6;
+    border-left: none;
+    border-right: none;
+    color: #5b142d;
+    background-color: #f3cdda;
+    box-shadow: 0 2px 6px #f5adc6;
  }
 
+
 form {
-    border: 1px solid #ffffff;
     padding: 5px;
     margin: 5px;
 }
@@ -164,14 +175,15 @@ form select, form input[type="text"] {
     width: 100%;
     padding: 5px;
     margin-bottom: 10px;
-    border: 1px solid #ffffff;
-    background-color: #f0c7d8;
+    border: 2px solid #8dac8a;
+    border-radius: 20px;
+    background-color: #a1cfa4;
     color: #30240c;
 }
 
 form input[type="submit"] {
-    background-color: #f0c7d8;
-    color: #000000;
+    background-color: #a1cfa4;
+    color: #ffffff;
     font-weight: bold;
     padding: 10px 15px;
     border: none;
@@ -179,11 +191,11 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    background-color: #e794b6;
+    background-color: #6b926e;
     color: #ffffff;
 }
 
-main {
+main:not(.index-main) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 20px;
@@ -199,9 +211,14 @@ main h2 {
 article {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     background-color:#f0e9dd;
     padding: 2px;
     align-items: center;
+    border-radius: 30px;
+    border: 2px, solid, #dac897;
+    box-shadow: 0 2px 6px #dac897;
+
 }
 
 .amiibo-image {
@@ -211,6 +228,10 @@ article {
     height: auto;
     object-fit: cover;
     align-items: center;
+    border-radius: 10px;
+    border: 2px, solid, #876124;
+    box-shadow: 0 2px 6px #4f3812;
+
 }
 
 h3 {
@@ -220,4 +241,50 @@ h3 {
 
 p {
     align-items: center;
+}
+
+.search-icon {
+    width: 30px;
+    height: auto;
+}
+
+article p {
+    margin: 2px 2px 2px 2px;
+    padding: 0;
+}
+
+.index-main {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    max-width: none;
+    height: 500px;
+    background-image: url(/static/images/acnh-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    z-index: 0;
+    overflow: hidden;
+
+}
+
+.index-main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* translucent black */
+  z-index: 0;
+}
+
+.index-main h1,
+.index-main p {
+  position: relative;
+  z-index: 1;
 }

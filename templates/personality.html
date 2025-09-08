@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h2>Personality</h2>
+<h2>Villager Personalities</h2>
 
     {% for personality, villager_image_pairs in personality_dict.items() %}
         <article>
@@ -10,8 +10,10 @@
                 {% for villager, image in villager_image_pairs %}
                     <p>
                         {{ villager }}
-                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
                     </p> 
+                    <p>
+                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
+                    </p>
                 {% endfor %}
                 
             </p>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h2>Species</h2>
+<h2>Villager Species</h2>
     {% for species, villager_image_pairs in species_dict.items() %}
         <article>
             <h3>{{ species }}</h3> 
@@ -9,8 +9,10 @@
                 {% for villager, image in villager_image_pairs %}
                     <p>
                         {{ villager }}
-                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
                     </p> 
+                    <p>
+                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
+                    </p>
                 {% endfor %}
                 
             </p>
