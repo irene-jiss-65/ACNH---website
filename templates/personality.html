@@ -5,18 +5,23 @@
 
     {% for personality, villager_image_pairs in personality_dict.items() %}
         <article>
-            <h3>{{ personality }}</h3> 
-            <p>
-                {% for villager, image in villager_image_pairs %}
-                    <p>
-                        {{ villager }}
-                    </p> 
-                    <p>
-                        <img src="/static/images/{{image}}.jpg" class="amiibo-image">
-                    </p>
-                {% endfor %}
+            <details>
+                <summary>{{ personality }}</summary> 
+                <div class="villager-list">
+                    {% for villager, image in villager_image_pairs %}
+                        <div class="villager-item">
+                            <p>{{ villager }}</p> 
+                            <p>
+                                <div class="card">
+                                    <img src="/static/images/{{image}}.jpg" class="amiibo-image-species" alt="{{image}}">
+                                </div>
+                            </p>
+                        </div>
+                    {% endfor %}
                 
-            </p>
+                
+                </div>
+            </details>
         </article>
     {% endfor %}
 {% endblock %}

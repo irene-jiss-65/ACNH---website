@@ -115,6 +115,27 @@ def render_search():
 
     return render_template ("alldata.html", villager=villager_list, title=title)
 
+@app.route('/sort')
+def render_sortpage():
+    sort = request.args.get('sort')
+    order= request.args.get('order', 'asc')
+
+    if order == 'asc':
+        new_order = 'desc'
+    else:
+        new_order = 'asc'
+    
+    query = "SELECT Name, Species, Personality, Birthday, VillagerImage from popular_villagers ORDER BY " + sort + " " + order
+
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    cur.execute(query)
+    villager_list = cur.fetchall()
+    con.close()
+
+    return render_template('alldata.html', villager=villager_list, order=new_order, sort=sort)
+
 def get_names(name_type):
     title = name_type.upper()
     query = "SELECT Name, Personality, Species, VillagerImage FROM popular_villagers WHERE Species=?"
@@ -128,18 +149,18 @@ def get_names(name_type):
     print(name_list)
     return name_list
 
-#def get_species():
-  #  con = create_connection(DATABASE)
-   # query = "SELECT DISTINCT Species FROM popular_villagers ORDER BY Species ASC"
+def get_species():
+    con = create_connection(DATABASE)
+    query = "SELECT DISTINCT Species FROM popular_villagers ORDER BY Species ASC"
 
-    #cur = con.cursor()
-    #cur.execute(query)
-    #records = cur.fetchall()
-    #print(records)
-    #for i in range(len(records)):
-     #   records[i] = records[i][0]
-    #print(records)
-    #return records
+    cur = con.cursor()
+    cur.execute(query)
+    records = cur.fetchall()
+    print(records)
+    for i in range(len(records)):
+        records[i] = records[i][0]
+    print(records)
+    return records
 
 
 def create_connection(db_file):

@@ -44,6 +44,23 @@ header, footer {
     width: 100%
 }
 
+footer {
+    margin: 120px;
+    padding: 20px;
+    margin-bottom: 0;
+    padding-left: 100px;
+    background-color: #b8d7e0;
+    color: #1d383f;
+}
+
+footer p a{
+    color:#47707b;
+}
+
+footer p a:hover{
+    color: #2d4f58;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -158,6 +175,13 @@ nav li a:hover {
     background-color: #f3cdda;
     box-shadow: 0 2px 6px #f5adc6;
  }
+
+table thead tr th a {
+    color:#5b142d;
+}
+table thead tr th a:hover {
+    color:#b63d68;
+}
 
 
 form {
@@ -287,4 +311,48 @@ article p {
 .index-main p {
   position: relative;
   z-index: 1;
+}
+
+details {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: #f0e9dd;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    list-style: none; 
+}
+
+summary:hover {
+    color: #4f75b8;
+
+}
+
+.villager-list {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.amiibo-image-species {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px, solid, #876124;
+    box-shadow: 0 2px 6px #4f3812;
+
+}
+
+.card {
+    width: 48%;
 }
