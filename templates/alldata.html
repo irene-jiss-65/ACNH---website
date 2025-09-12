@@ -3,37 +3,64 @@
 
 {% block main %}
    
-    <h2>All Animal Crossing Villagers</h2>
+    
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th><a href="/sort?sort=Name&order={{ order }}">Name</a></th>
-                    <th><a href="/sort?sort=Species&order={{ order }}">Species</a></th>
-                    <th><a href="/sort?sort=Personality&order={{ order }}">Personality</a></th>
-                    <th><a href="/sort?sort=Birthday&order={{ order }}">Birthday</a></th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for villagers in villager %}
-                <tr>
+        {% if no_results %}
+                <h2>No Results Found...</h2>
+                <h2>Try searching keywords</h2>
+        {% else %}
+        <h2>All Animal Crossing Villagers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="/sort?sort=Name&order={{ order }}">
+                                Name
+                                <img src="/static/images/arrow-real.png" class="arrow" alt="arrow icon">
+                            </a>
+                            
+                        </th>
+                        <th>
+                            <a href="/sort?sort=Species&order={{ order }}">
+                                Species
+                                <img src="/static/images/arrow-real.png" class="arrow" alt="arrow icon">
+                            </a>
+                        </th>
+                        <th>
+                            <a href="/sort?sort=Personality&order={{ order }}">
+                                Personality
+                                <img src="/static/images/arrow-real.png" class="arrow" alt="arrow icon">
+                            </a>
+                        </th>
+                        <th>
+                            <a href="/sort?sort=Birthday&order={{ order }}">
+                                Birthday
+                                <img src="/static/images/arrow-real.png" class="arrow" alt="arrow icon">
+                            </a>
+                        </th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for villagers in villager %}
+                    <tr>
+                    
+                        <td>{{ villagers[0] }}</td>
+                        <td>{{ villagers[1] }}</td>
+                        <td>{{ villagers[2] }}</td>
+                        <td>{{ villagers[3] }}</td>
+                        <td>
+                            <div class="villager-image">
+                                <img src="/static/images/{{ villagers[4] }}.jpg" class="amiibo-image" alt="{{ villagers[4]}} villager">
+                            </div>
+                            
+                        </td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
                 
-                    <td>{{ villagers[0] }}</td>
-                    <td>{{ villagers[1] }}</td>
-                    <td>{{ villagers[2] }}</td>
-                    <td>{{ villagers[3] }}</td>
-                    <td>
-                        <div class="villager-image">
-                            <img src="/static/images/{{ villagers[4] }}.jpg" class="amiibo-image">
-                        </div>
-                        
-                    </td>
-                {% endfor %}
-                </tr>
-            </tbody>
-            
-        </table>
+            </table>
+        {% endif %}
     </div>
 
 {% endblock %}

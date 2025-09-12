@@ -6,12 +6,19 @@
         <article>
             <details>
             
-                <summary>{{ species }}</summary> 
+                <summary>
+                    {{ species }}
+                    <img src="/static/images/arrow-real.png" class="arrow">
+                </summary> 
+                
 
                 <div class="villager-list">
                     {% for villager, image in villager_image_pairs %}
                         <div class="villager-item">
-                            <p>{{ villager }}</p> 
+                            <p>{{ villager }}  
+                            </p>
+                            
+
                             <p>
                                 <div class="card">
                                     <img src="/static/images/{{image}}.jpg" class="amiibo-image-species" alt="{{image}}">

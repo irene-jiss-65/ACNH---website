@@ -6,7 +6,10 @@
     {% for personality, villager_image_pairs in personality_dict.items() %}
         <article>
             <details>
-                <summary>{{ personality }}</summary> 
+                <summary>
+                    {{ personality }}
+                    <img src="/static/images/arrow-real.png" class="arrow">
+                </summary> 
                 <div class="villager-list">
                     {% for villager, image in villager_image_pairs %}
                         <div class="villager-item">
