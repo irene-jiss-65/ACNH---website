@@ -162,13 +162,13 @@ nav li a:hover {
  th, td {
     text-align: center;
     padding: 20px;
-    border: 2px, solid #f5adc6;
+    border: 2px solid #f5adc6;
     border-left: none;
     border-right: none;
  }
 
  th {
-    border: 2px, solid, #f5adc6;
+    border: 2px solid #f5adc6;
     border-left: none;
     border-right: none;
     color: #5b142d;
@@ -240,7 +240,7 @@ article {
     padding: 2px;
     align-items: center;
     border-radius: 30px;
-    border: 2px, solid, #dac897;
+    border: 2px solid #dac897;
     box-shadow: 0 2px 6px #dac897;
 
 }
@@ -253,7 +253,7 @@ article {
     object-fit: cover;
     align-items: center;
     border-radius: 10px;
-    border: 2px, solid, #876124;
+    border: 2px solid #876124;
     box-shadow: 0 2px 6px #4f3812;
 
 }
@@ -382,7 +382,7 @@ details[open] .arrow {
     object-fit: cover;
     align-items: center;
     border-radius: 10px;
-    border: 2px, solid, #876124;
+    border: 2px solid #876124;
     box-shadow: 0 2px 6px #4f3812;
 
 }

@@ -32,6 +32,7 @@ def render_webpage():
     Fetch the name, species and villagers image from database
     Render an HTML template with the recieved data
     """
+    # Query that takes name species and image from database
     query = "SELECT Name, Species, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
@@ -54,6 +55,7 @@ def render_alldata():
     Execute a query that fetches all the records
     Return a rendered HTML with all of the data
     """
+    # Query that takes all records from database
     query = "SELECT Name, Species, Personality, Birthday, \
           VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
@@ -77,6 +79,7 @@ def render_species():
     Creates a zip dictionary that links each name and image to the species
     Return a dictionary of species with corresponding name and image
     """
+    # Query that takes the name, species and image from database
     query = "SELECT Name, Species, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
@@ -116,6 +119,7 @@ def render_personality():
     Make a dictionary that matches each name and image to the personality
     Zip the dictionary
     """
+    # Query that takes the name, personality and image from database
     query = "SELECT Name, Personality, VillagerImage FROM popular_villagers"
     con = create_connection(DATABASE)
     print(con)
@@ -156,6 +160,8 @@ def render_search():
     """
     search = request.form['search']
     title = "Search for " + search
+
+    # Query that takes all records from database
     query = "SELECT Name, Personality, Species, Birthday, VillagerImage \
             FROM popular_villagers WHERE  \
             Name LIKE ? OR Personality LIKE ? OR Species LIKE ? \
@@ -184,11 +190,13 @@ def render_sortpage():
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
+    # Checks to see the current order
     if order == 'asc':
         new_order = 'desc'
     else:
         new_order = 'asc'
-
+    
+    # Query that takes all records and orders them
     query = "SELECT Name, Species, Personality, Birthday, VillagerImage \
         FROM popular_villagers ORDER BY " + sort + " " + order
 

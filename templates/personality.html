@@ -14,11 +14,9 @@
                     {% for villager, image in villager_image_pairs %}
                         <div class="villager-item">
                             <p>{{ villager }}</p> 
-                            <p>
-                                <div class="card">
-                                    <img src="/static/images/{{image}}.jpg" class="amiibo-image-species" alt="{{image}}">
-                                </div>
-                            </p>
+                            <div class="card">
+                                <img src="/static/images/{{image}}.jpg" class="amiibo-image-species" alt="{{image}} villager">
+                            </div>
                         </div>
                     {% endfor %}
                 

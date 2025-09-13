@@ -5,12 +5,9 @@
     {% for villagers in villager %}
     <article>
         <h3>{{ villagers[0] }}</h3>
-        
-        <p>
-            <div class="villager-image">
-                <img src="/static/images/{{villagers[2]}}.jpg" class="amiibo-image">
-            </div>
-        </p>
+        <div class="villager-image">
+            <img src="/static/images/{{villagers[2]}}.jpg" class="amiibo-image" alt="{{villagers[2]}} villager">
+        </div>
         <p>{{ villagers[1] }}</p>
 
     </article>
